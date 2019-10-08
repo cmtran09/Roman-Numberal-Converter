@@ -27,6 +27,13 @@ romToNumBtn.addEventListener(
       IV: 4,
       I: 1
     };
+
+    // CHECKING IF INPUT IS A NUMBER
+    // isNAN(value) function determines whether a value is NaN or not, returns true or false
+    if (isNaN(rNum)) {
+      // if not a number NaN, output for will display meesage
+      return (displayedNum.value = "Please enter a Number");
+    } // if it is not NaN (is a number) function continues
     // loops through the convert table
     for (let key in romanToNum) {
       console.log(key);
