@@ -1,65 +1,112 @@
-const numToRoman = {
-  1000: "M",
-  900: "CM",
-  500: "D",
-  400: "CD",
-  100: "C",
-  90: "XC",
-  50: "L",
-  40: "XL",
-  10: "X",
-  9: "IX",
-  5: "V",
-  4: "IV",
-  1: "I"
-};
-
-const romanToNum = {
-  M: 1000,
-  CM: 900,
-  D: 500,
-  CD: 400,
-  C: 100,
-  XC: 90,
-  L: 50,
-  XL: 40,
-  X: 10,
-  IX: 9,
-  V: 5,
-  IV: 4,
-  I: 1
-};
-
-let convertedR = "";
-let convertedN = "";
-
-const romansToNumbers = rNum => {
-  for (let key in romanToNum) {
-    console.log(key);
-    while (rNum >= romanToNum[key]) {
-      convertedR += key;
-      rNum -= romanToNum[key];
-      console.log("num decreased by", rNum);
+// assign button to variable
+let romToNumBtn = document.querySelector(".roman-number-btn");
+// convert number in form to roman numerals on click event
+romToNumBtn.addEventListener(
+  "click",
+  (romansToNumbers = () => {
+    // assign content in form (content to be converted) to variable
+    let rNum = document.getElementById("number-to-convert").value;
+    console.log("rnum is" + rNum);
+    // convterted form assigned a varible
+    let displayedNum = document.getElementById("converted-rom");
+    // variable to contain the answer
+    let convertedR = "";
+    // convert table
+    const romanToNum = {
+      M: 1000,
+      CM: 900,
+      D: 500,
+      CD: 400,
+      C: 100,
+      XC: 90,
+      L: 50,
+      XL: 40,
+      X: 10,
+      IX: 9,
+      V: 5,
+      IV: 4,
+      I: 1
+    };
+    // loops through the convert table
+    for (let key in romanToNum) {
+      console.log(key);
+      //while looping through the convert table, if the number to be converted is more...
+      //...than or equal to the Key's Value.. =>
+      while (rNum >= romanToNum[key]) {
+        // ..add (concatinate) the key to the convertedR variable.. =>
+        convertedR += key;
+        // .. and reduce rNum by the Key's Value
+        // ULTIMATELY rNum will reduce to ZERO and convertedR will contain the answer
+        rNum -= romanToNum[key];
+        console.log("num decreased by", rNum);
+      }
     }
-  }
-  return convertedR;
-};
+    // .value  the value displayed in the form id'd of "converted-rom" will be assigned...
+    //... to the answer convertedR
+    return (displayedNum.value = convertedR);
+  })
+);
 
-const numbersToRomans = num => {
-  for (let key in numToRoman) {
-    console.log(key);
-    while (num >= numToRoman[key]) {
-      convertedN += key;
-      num -= numToRoman[key];
-      console.log("nRRRRum decreased by", num);
-    }
-  }
-  return convertedN;
-};
+// const romansToNumbers = rNum => {
+//   let displayedNum = document.getElementById("converted-rom");
+//   let convertedR = "";
+//   const romanToNum = {
+//     M: 1000,
+//     CM: 900,
+//     D: 500,
+//     CD: 400,
+//     C: 100,
+//     XC: 90,
+//     L: 50,
+//     XL: 40,
+//     IX: 9,
+//     V: 5,
+//     IV: 4,
+//     I: 1
+//   };
 
-const numberToRomans = num => {};
+//   for (let key in romanToNum) {
+//     console.log(key);
+//     while (rNum >= romanToNum[key]) {
+//       convertedR += key;
+//       rNum -= romanToNum[key];
+//       console.log("num decreased by", rNum);
+//     }
+//   }
+//   return (displayedNum.value = convertedR);
+// };
 
-console.log(romansToNumbers(7));
+// let convertedN = "";
 
-console.log(romansToNumbers(10));
-console.log(numbersToRomans(400));
+// const numbersToRomans = num => {
+
+//   const numToRoman = {
+//     1000: "M",
+//     900: "CM",
+//     500: "D",
+//     400: "CD",
+//     100: "C",
+//     90: "XC",
+//     50: "L",
+//     40: "XL",
+//     10: "X",
+//     9: "IX",
+//     5: "V",
+//     4: "IV",
+//     1: "I"
+//   };
+
+//   for (let key in numToRoman) {
+//     console.log(key);
+//     while (num >= numToRoman[key]) {
+//       convertedN += key;
+//       console.log(convertedN + "in while loop");
+//       num -= numToRoman[key];
+//       console.log("nRum decreased by", num);
+//     }
+//   }
+//   console.log(convertedN);
+//   return convertedN;
+// };
+
+// console.log("RESEULT" + numbersToRomans(450));
